@@ -74,7 +74,7 @@ def codegen(name, providers, **kwargs):
             "//codegen:terraform",
         ],
         outs = ["schema.json"],
-        cmd = "export TF_PLUGIN_CACHE_DIR=/tmp; cp $(location " + name + "_main.tf) main.tf; $(location //codegen:terraform) init; $(location //codegen:terraform) providers schema -json > $@",
+        cmd = "cp $(location " + name + "_main.tf) main.tf; $(location //codegen:terraform) init; $(location //codegen:terraform) providers schema -json > $@",
     )
 
     _codegen_runner(
